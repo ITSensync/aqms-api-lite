@@ -1,6 +1,10 @@
-import { getLast } from "../services/particulate.service.js";
+import { particulateService } from "../services/particulate.service.js";
 
-export async function getLastData(req, res) {
-  const result = await getLast();
+async function getLastData(req, res) {
+  const result = await particulateService.getLast();
   res.status(result.status).send(result);
 }
+
+export const particulateController = {
+  getLastData,
+};

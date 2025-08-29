@@ -1,8 +1,8 @@
 import express from "express";
-import { getLastData } from "../controllers/particulate.controller.js";
+import { particulateController } from "../controllers/particulate.controller.js";
 
 const router = express.Router();
 
-router.get("/latest", getLastData);
+router.get("/latest", particulateController.getLastData);
 
 export default router;

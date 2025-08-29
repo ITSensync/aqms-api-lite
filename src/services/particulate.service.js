@@ -1,6 +1,6 @@
 import { Particulate } from "../models/Particulate.model.js";
 
-export async function getLast() {
+async function getLast() {
   try {
     const dataResult = await Particulate.findOne({
       order: [
@@ -31,3 +31,7 @@ export async function getLast() {
     };
   }
 }
+
+export const particulateService = {
+  getLast,
+};
