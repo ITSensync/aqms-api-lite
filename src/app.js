@@ -8,6 +8,7 @@ import api from "./api/index.js";
 
 import { db } from "./config/db.config.js";
 import * as middlewares from "./middlewares.js";
+import { Location } from "./models/location.model.js";
 import { Particulate } from "./models/Particulate.model.js";
 
 const app = express();
@@ -21,6 +22,7 @@ app.use(express.json());
   try {
     await db.authenticate();
     await Particulate.sync();
+    await Location.sync();
     console.log("Connection to the database has been established successfully");
   }
   catch (error) {
