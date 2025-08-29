@@ -28,7 +28,7 @@ export const Particulate = db.define(`maintb`, {
     allowNull: true,
     type: DataTypes.FLOAT,
   },
-  no3: {
+  no2: {
     allowNull: true,
     type: DataTypes.FLOAT,
   },
