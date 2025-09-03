@@ -1,15 +1,21 @@
+/* eslint-disable node/no-process-env */
 /* eslint-disable no-console */
 import cors from "cors";
+import dotenv from "dotenv";
 import express from "express";
 import helmet from "helmet";
+
 import morgan from "morgan";
 
 import api from "./api/index.js";
-
 import { db } from "./config/db.config.js";
 import * as middlewares from "./middlewares.js";
 import { Location } from "./models/location.model.js";
 import { Particulate } from "./models/Particulate.model.js";
+
+import { particulateGateway } from "./socket-gateway/particulate.gateway.js";
+
+dotenv.config();
 
 const app = express();
 
@@ -40,5 +46,6 @@ app.use("/api", api);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
+particulateGateway.initWebSocket({ port: process.env.WS_PORT });
 
 export default app;
