@@ -1,4 +1,4 @@
-import { Particulate } from "../models/Particulate.model.js";
+import { Particulate } from "../models/particulate.model.js";
 
 async function getLast() {
   try {

@@ -11,7 +11,7 @@ import api from "./api/index.js";
 import { db } from "./config/db.config.js";
 import * as middlewares from "./middlewares.js";
 import { Location } from "./models/location.model.js";
-import { Particulate } from "./models/Particulate.model.js";
+import { Particulate } from "./models/particulate.model.js";
 
 import { particulateGateway } from "./socket-gateway/particulate.gateway.js";
 
