@@ -27,7 +27,7 @@ app.use(express.json());
 (async () => {
   try {
     await db.authenticate();
-    await Particulate.sync();
+    await Particulate.sync({ alter: true });
     await Location.sync();
     console.log("Connection to the database has been established successfully");
   }
