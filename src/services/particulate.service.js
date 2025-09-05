@@ -1,3 +1,4 @@
+/* eslint-disable style/quotes */
 import { Particulate } from "../models/particulate.model.js";
 
 async function getLast() {
@@ -58,7 +59,45 @@ async function get(date) {
   }
 }
 
+async function getPagination(page, limit) {
+  try {
+    const queryPage = Number.parseInt(page) || 1;
+    const queryLimit = Number.parseInt(limit) || 10;
+    const offset = (queryPage - 1) * queryLimit;
+
+    const today = new Date();
+    const tanggal = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+
+    const { count, rows } = await Particulate.findAndCountAll({
+      limit: queryLimit,
+      offset,
+      where: {
+        tanggal,
+      },
+      order: [['jam', 'desc']], // urutan data
+    });
+
+    return {
+      status: 200,
+      message: 'success get data particulate',
+      pagination: {
+        total_page: Math.ceil(count / queryLimit),
+        total_item: count,
+      },
+      data: rows,
+    };
+  }
+  catch (error) {
+    console.error(error);
+    return {
+      status: error.status || 500,
+      message: error.message,
+    };
+  }
+}
+
 export const particulateService = {
   getLast,
   get,
+  getPagination,
 };

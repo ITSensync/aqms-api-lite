@@ -10,7 +10,13 @@ async function getData(req, res) {
   res.status(result.status).send(result);
 }
 
+async function getPaginationData(req, res) {
+  const result = await particulateService.getPagination(req.query.page, req.query.limit);
+  res.status(result.status).send(result);
+}
+
 export const particulateController = {
   getLastData,
   getData,
+  getPaginationData,
 };
