@@ -68,6 +68,10 @@ export const Particulate = db.define(`maintb`, {
     allowNull: true,
     type: DataTypes.FLOAT,
   },
+  uv: {
+    allowNull: false,
+    type: DataTypes.FLOAT,
+  },
   rain_intensity: {
     allowNull: true,
     type: DataTypes.FLOAT,
