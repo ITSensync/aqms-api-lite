@@ -32,7 +32,7 @@ function initWebSocket(server) {
       try {
         clearInterval(interval);
         sendLatestData();
-        interval = setInterval(sendLatestData, 5 * 60 * 1000);
+        interval = setInterval(sendLatestData, 2 * 60 * 1000);
       }
       // eslint-disable-next-line unused-imports/no-unused-vars
       catch (error) {
