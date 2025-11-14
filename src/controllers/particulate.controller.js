@@ -15,8 +15,24 @@ async function getPaginationData(req, res) {
   res.status(result.status).send(result);
 }
 
+async function getPaginationGasData(req, res) {
+  const result = await particulateService.getPaginationGas(req.query.page, req.query.limit);
+  res.status(result.status).send(result);
+}
+async function getPaginationO3Data(req, res) {
+  const result = await particulateService.getPaginationO3(req.query.page, req.query.limit);
+  res.status(result.status).send(result);
+}
+async function getPaginationPMData(req, res) {
+  const result = await particulateService.getPaginationPM(req.query.page, req.query.limit);
+  res.status(result.status).send(result);
+}
+
 export const particulateController = {
   getLastData,
   getData,
   getPaginationData,
+  getPaginationGasData,
+  getPaginationPMData,
+  getPaginationO3Data,
 };

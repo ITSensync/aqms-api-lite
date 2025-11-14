@@ -10,8 +10,11 @@ import morgan from "morgan";
 import api from "./api/index.js";
 import { db } from "./config/db.config.js";
 import * as middlewares from "./middlewares.js";
+import { Gas } from "./models/gas.model.js";
 import { Location } from "./models/location.model.js";
+import { O3 } from "./models/o3.model.js";
 import { Particulate } from "./models/particulate.model.js";
+import { PM } from "./models/pm.model.js";
 
 import { particulateGateway } from "./socket-gateway/particulate.gateway.js";
 
@@ -28,6 +31,9 @@ app.use(express.json());
   try {
     await db.authenticate();
     await Particulate.sync({ alter: true });
+    await PM.sync();
+    await Gas.sync();
+    await O3.sync();
     await Location.sync();
     console.log("Connection to the database has been established successfully");
   }
